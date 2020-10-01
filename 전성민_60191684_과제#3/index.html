@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta cherset="UTF-8">
+        <meta name="Author" content="Seong-Min Jeon">
+        <meta name="Keywords" content="html">
+        <title>전성민/60191684/기초웹프로그래밍 과제 #3</title>        
+
+        <style>
+            #menubar {
+              background: rgb(91, 91, 91);
+              width: 570px;
+              height: 35px;
+              padding-top: 5px;
+              margin-left: 30px;
+              border-color: black;
+              border-style: dotted;
+            }
+            #menubar ul {
+              margin: 0;
+            }
+            #menubar ul li {
+              display: inline-block;
+              list-style-type: none;
+              padding: 0px 20px;
+              text-align: center;
+              vertical-align: middle;
+              font-size: 20px;
+            }
+            a {
+              text-decoration: none;
+              color: white;
+            }
+            a:hover {
+              color: darkred;
+            }
+
+            h2 {
+              font-size: 50px;
+              font-weight: 100;
+              font-family: serif;
+              color: white;
+              text-align: center;
+              padding-top: 50px;
+            }
+
+            h2 > span {
+              font-family: cursive;
+              font-style: italic;
+              color: darkred;
+              text-shadow : 3px 3px 5px red;
+            }
+
+            .img {
+              position: absolute;
+            }
+
+            div > div {
+              display: inline;
+              font-size: 20px;
+              font-weight: bold;
+            }
+
+            #quiz {
+              position: absolute;
+              background-color: gainsboro;
+              border-color: black;
+              border-style: dashed;
+              width: 600px;
+              height: 100px;
+            }
+            #quiz p {
+              color: indianred;
+              font-family: cursive;
+              text-align: center;
+              padding-top: 7px;
+            }
+
+            #answer {
+              position: absolute;
+            }
+
+            #box1 {
+              position: absolute;
+              background :rgb(202, 157, 164);
+              width : 300px;
+              padding : 100px; 
+              border-radius : 0px 20px;
+              z-index: 1;
+            }
+            #box2 {
+              position: absolute;
+              background :rgb(220, 173, 180);
+              width : 300px;
+              padding : 100px; 
+              border-radius : 0px 20px;
+              z-index: 2;
+            }
+            #box3 {
+              position: absolute;
+              background :rgb(231, 186, 193);
+              width : 300px;
+              padding : 100px; 
+              border-radius : 0px 20px;
+              z-index: 3;
+            }
+            #exp {
+              position: absolute;
+              font-size: 18px;
+              color: rgb(231, 186, 193);
+              z-index: 4;
+            }
+            #exp:hover {
+              color: black;
+            }
+
+            .footer {
+              position: absolute;
+              top: 1800px;
+              left: 670px;
+              background-color: gray;
+              color: white;
+            }
+          
+        </style>
+
+    </head>    
+    <body style="background: gray; padding-bottom: 1500px;">
+
+      <nav id="menubar">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Quiz1</a></li>
+          <li><a href="#">Quiz2</a></li>
+          <li><a href="#">Quiz3</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </nav>
+        
+      <h2><span>동쪽</span>의 <span>짐승</span></h2>
+
+      <div class="img" style="left: 300px; top: 300px;">
+        <img src="image/brain.png" width="150px">
+        <div>뇌 - 1783</div>
+      </div>
+
+      <div class="img" style="left: 650px; top: 300px;">
+        <img src="image/lung.png" width="150px">
+        <div>폐 - 1525</div>
+      </div>
+
+      <div class="img" style="left: 1000px; top: 300px;">
+        <img src="image/liver.png" width="150px">
+        <div>간 - 6237</div>
+      </div>
+
+      <div class="img" style="left: 300px; top: 550px;">
+        <img src="image/small_intestine.png" width="150px">
+        <div>소장 - 1062</div>
+      </div>
+
+      <div class="img" style="left: 650px; top: 550px;">
+        <img src="image/large_intestine.png" width="150px">
+        <div>대장 - 524</div>
+      </div>
+
+      <div class="img" style="left: 1000px; top: 550px;">
+        <img src="image/heart.png" width="150px">
+        <div>심장 - 5709</div>
+      </div>
+
+      <div class="img" style="left: 300px; top: 800px;">
+        <img src="image/bone.png" width="150px">
+        <div>뼈 - 835</div>
+      </div>
+
+      <div class="img" style="left: 650px; top: 800px;">
+        <img src="image/kidney.png" width="150px">
+        <div>신장 - 8101</div>
+      </div>
+
+      <div class="img" style="left: 1000px; top: 800px;">
+        <img src="image/bladder.png" width="150px">
+        <div>방광 - 588</div>
+      </div>
+      
+      <div id="quiz" style="left: 450px; top: 1000px;">
+        <p>자주 들르던 상점에 가서 사다리와 비 하나를 가져다 주었다.</p>
+        <p>그러자 상점 주인은 아무렇지 않게 돈으로 바꿔주었다.</p>
+      </div>
+
+      <form id="answer" style="left: 680px; top: 1150px;">
+        답: <input type="text" size="10" value="">
+        <span style="position: relative; right: 30px; top: 350px; font-size: 30px;">
+          &lt;- 해설
+          <p style="font-size: 15px; padding-left: 130px;">(마우스 커서를 올려주세요)</p>
+        </span>
+      </form>
+
+      <div id="box2" style="left: 210px; top: 1410px;"></div>
+      <div id="box3" style="left: 220px; top: 1420px;"></div>
+      <div id="box1" style="left: 200px; top: 1400px;"></div>
+      <div id="exp" style="left: 240px; top: 1425px;">
+        문제의 제목이 "동쪽의 짐승"임을 눈여겨 봐야한다.<br>
+        동쪽은 영어로 east이고 짐승은 beast이다.<br>
+        따라서 문제의 키워드를 영어로 변환하고,<br>
+        b를 앞에 붙이는 아이디어를 떠올려야 한다.<br>
+        사다리는 영어로 ladder이므로 bladder(방광),<br>
+        비는 영어로 rain이므로 brain(뇌),<br>
+        하나는 영어로 one이므로 bone(뼈)이다.<br>
+        따라서 답은 588+1783+835=3206이다.
+      </div>
+      
+      <footer class="footer">
+        <hr>
+        <p>문제 출처: 카이스트 퍼플</p>
+    </footer>
+      
+    </body>
+</html>
