@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta cherset="UTF-8">
+        <meta name="Author" content="Seong-Min Jeon">
+        <meta name="Keywords" content="html">
+        <title>전성민/60191684/기초웹프로그래밍 과제 #5</title>        
+
+        <script>
+            function Book(title, author, price, stock) {
+                this.title = title;
+                this.author = author;
+                this.price = price;
+                this.stock = stock;
+                
+                Book.prototype.toString = function() {
+                   return `${this.title} / ${this.author}저 / ${this.price}원` + "<br>";
+                }
+                Book.prototype.getStock = function() {return this.stock;}   
+            }
+        </script>
+
+    </head>    
+    <body>
+        <script>            
+            var t = prompt("재고를 알려드립니다.\n책 제목을 입력하세요!");
+
+            document.write("<h3>Book 정보(제목/저자/가격)</h3>");
+            document.write("<hr>");
+
+            var bookAry = [];
+            var b1 = new Book("Java", "황기태", 33000, 4);     
+            var b2 = new Book("HTML5", "김연서", 30000, 5);        
+            var b3 = new Book("OS", "A.Silberschatz", 39000, 2);
+            var b4 = new Book("JavaScript", "윤인성", 25000, 3);
+            var b5 = new Book("웹프로그래밍", "황기태", 28000, 1);            
+            bookAry.push(b1, b2, b3, b4, b5);
+            bookAry.sort();
+
+            var find = "";
+            for(var idx in bookAry) {
+                document.write(bookAry[idx].toString());
+                if(t == bookAry[idx].title) {
+                    find = bookAry[idx];
+                }
+            }
+
+            document.write("<hr>");
+
+            if(!find) 
+                document.write("그런 책은 없습니다.")
+            else
+                document.write(`${find.title}은 ${find.stock}권 있습니다.`)
+            
+            
+        </script>        
+      
+    </body>
+</html>
