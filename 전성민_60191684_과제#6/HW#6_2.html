@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta cherset="UTF-8">
+        <meta name="Author" content="Seong-Min Jeon">
+        <meta name="Keywords" content="html">
+        <title>전성민/60191684/기초웹프로그래밍 과제 #6</title>        
+
+        <style>
+           ol {
+               background-color: yellowgreen;               
+           }           
+        </style>
+
+        <script>
+            function addMethod() {
+                var method = prompt("라면을 끓이는 순서를 입력하라");
+                var list = document.getElementById("list");
+                var newEle = document.createElement("li");
+                newEle.innerHTML = method;
+                list.appendChild(newEle);
+            }
+        </script>
+
+    </head>    
+    <body>    
+        <h2>라면을 끓이는 순서</h2>
+        <hr>
+        <ol id="list" type="A" onclick="addMethod()">
+            <li>물을 끓인다.</li>                    
+        </ol>
+
+    </body>
+</html>

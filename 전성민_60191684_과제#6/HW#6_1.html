@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta cherset="UTF-8">
+        <meta name="Author" content="Seong-Min Jeon">
+        <meta name="Keywords" content="html">
+        <title>전성민/60191684/기초웹프로그래밍 과제 #6</title>        
+
+        <style>
+            span {
+                color: blue;
+                visibility: hidden;
+            }
+        </style>
+
+        <script>
+            function showAndHide() {
+                var list = document.getElementsByTagName("span");
+                for(var i of list) {                    
+                    if(i.style.visibility == "visible")  {
+                        i.style.visibility = "hidden"
+                    } else {
+                        i.style.visibility = "visible"
+                    }
+                }
+            }
+        </script>
+
+    </head>    
+    <body>    
+        <h2>다음 빈 곳에 숨은 단어? <button onclick="showAndHide()">show/hide</button> </h2>
+        <hr>
+        <ul>
+            <li>I (<span>love</span>) you.</li>
+            <li>CSS is Cascading (<span>Style</span>) Sheet.</li>
+            <li>응답하라 (<span>1998</span>).</li>
+        </ul>
+
+    </body>
+</html>
