@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta cherset="UTF-8">
+        <meta name="Author" content="Seong-Min Jeon">
+        <meta name="Keywords" content="html">
+        <title>전성민/60191684/기초웹프로그래밍 과제 #7</title>        
+
+        <style>
+            img {
+                width: 30%;
+            }
+
+            .pizzaData {
+                width: 30%;
+                padding-left: 10px;
+                background-color: rgba(118, 255, 255, 0.591);
+            }
+
+            div::after {
+                content: '';
+                display: table;
+                clear: both;
+            }
+
+            .checked {                
+                background-color: blanchedalmond;
+                font-weight: bold;              
+                width: 30%;
+                text-align: center;
+            }
+        </style>
+
+        <script>
+
+            function pizzaData(obj) {
+                var id = obj.id;                
+                if(id == "p1") {
+                    showData(id, "팔자피자", 25000, "여덟가지 재료", "여덟가지 맛");
+                } else if(id == "p2") {
+                    showData(id, "옥수수피자", 22000, "통옥수수", "쫀득한 통옥수수와 부드러운 고구마, 상큼한 파인애플의 맛");
+                } else if(id == "p3") {
+                    showData(id, "팔도피자", 28000, "임실치즈, 새우, 간장 불고기, 고추장 불고기", "대한민국 지역의 맛");
+                } else if(id == "p4") {
+                    showData(id, "전주불백피자", 25000, "간장 불고기와 고추장 불고기", "대한민국 전통 불백의 맛");
+                } else if(id == "p5") {
+                    showData(id, "부산피자", 31000, "새우, 갑오징어, 낙지", "다이나믹한 부산의 맛");
+                } else if(id == "p6") {
+                    showData(id, "목동피자", 22000, "야채, 햄, 페페로니, 우유", "건강한 한국 피자의 맛");
+                }
+            }
+
+            function showData(id, name, price, material, taste) {                
+                id += "Data";
+                var obj = document.getElementById(id);
+                obj.innerHTML = "<strong>" + name + "</strong><br><strong>" + "L " + price + "</strong><br><br>" + material + "가 들어가 더욱 맛있고 <br>" + taste + "을 느낄 수 있습니다.";               
+            }
+
+            function removePizzaData(obj) {
+                document.getElementById(obj.id + "Data").innerHTML = "";
+            }
+
+            function checkPizza(obj) {
+                var item = document.getElementById(obj.id + "Checked");
+                if(item.innerHTML == "선택 완료") {
+                    item.innerHTML = "";       
+                    var id = obj.id;
+                    if(id == "p1") {
+                        removeOrder(id, 25000);
+                    } else if(id == "p2") {
+                        removeOrder(id, 22000);
+                    } else if(id == "p3") {
+                        removeOrder(id, 28000);
+                    } else if(id == "p4") {
+                        removeOrder(id, 25000);
+                    } else if(id == "p5") {
+                        removeOrder(id, 31000);
+                    } else if(id == "p6") {
+                        removeOrder(id, 22000);
+                    }   
+                } else {
+                    item.innerHTML = "선택 완료";         
+                    var id = obj.id;
+                    if(id == "p1") {
+                        addOrder(id, "팔자피자", 25000);
+                    } else if(id == "p2") {
+                        addOrder(id, "옥수수피자", 22000);
+                    } else if(id == "p3") {
+                        addOrder(id, "팔도피자", 28000);
+                    } else if(id == "p4") {
+                        addOrder(id, "전주불백피자", 25000);
+                    } else if(id == "p5") {
+                        addOrder(id, "부산피자", 31000);
+                    } else if(id == "p6") {
+                        addOrder(id, "목동피자", 22000);
+                    }      
+                }
+            }
+
+            function sideSelect() {
+                var sel = document.getElementById("sel");
+                var index= sel.selectedIndex;
+                if(index == 0) {
+                    addOrder("s1", "[사이드]토마토 파스타", 7500);
+                } else if(index == 1) {
+                    addOrder("s2", "[사이드]크림 파스타", 8500);
+                } else if(index == 2) {
+                    addOrder("s3", "[사이드]콜라 500ml", 1500);
+                } else if(index == 3) {
+                    addOrder("s4", "[사이드]콜라 1.25L", 2000);
+                } else if(index == 4) {
+                    removeOrder("s1", 7500);
+                } else if(index == 5) {
+                    removeOrder("s2", 8500);
+                } else if(index == 6) {
+                    removeOrder("s3", 1500);
+                } else if(index == 7) {
+                    removeOrder("s4", 2000);
+                }
+            }
+
+            function optionSelect() {
+                var option = document.getElementsByName("option");      
+                removeOrder("o1", 4000);
+                removeOrder("o2", 4000);
+                removeOrder("o3", 4000);
+                removeOrder("o4", 4000);
+                if(option[0].checked) {
+                    addOrder("o1", "[옵션]치즈 크러스트", 4000);
+                } else if(option[1].checked) {
+                    addOrder("o2", "[옵션]고구마 골드", 4000);
+                } else if(option[2].checked) {
+                    addOrder("o3", "[옵션]팥 골드", 4000);
+                } else if(option[3].checked) {
+                    addOrder("o4", "[옵션]슈크림 치즈 골드", 4000);
+                }
+            }
+
+            function addOrder(id, name, menuPrice) {
+                var menu = document.createElement("p");
+                menu.innerHTML = name;
+                menu.setAttribute("id", id+"Sel");
+                var bill = document.getElementById("bill");
+                bill.appendChild(menu);
+                var price = document.getElementById("price");
+                price.innerText = parseInt(price.innerText) + parseInt(menuPrice);
+            }
+
+            function removeOrder(id, menuPrice) {
+                var menu = document.getElementById(id+"Sel");
+                if(menu == null) {return;}
+                var parent = menu.parentElement;
+                parent.removeChild(menu);     
+                var price = document.getElementById("price");
+                price.innerHTML = parseInt(price.innerText) - parseInt(menuPrice);        
+            }
+
+            function submit() {                                
+                var name = document.getElementById("name");
+                var bill = document.getElementById("bill");
+                var price = document.getElementById("price").innerText;
+                var list = bill.innerText.split("\n")                
+                for(var i in list) {                                        
+                    if(list[i] == "") {
+                        list.splice(i, 1);
+                    }
+                }                
+                alert(`${name.value}님의 ${list}의 주문이 완료되었습니다. 가격은 ${price}원입니다.`);
+            }
+
+        </script>
+
+    </head>    
+    <body>        
+
+        <h2><strong><p>메인 메뉴</p></strong></h2>
+        
+        <div>
+            <img id="p1" src="img/p1.jpg" alt="." style="float: left;" onmouseover="pizzaData(this)" onmouseout="removePizzaData(this)" ondblclick="checkPizza(this)">
+            <p class="pizzaData" id="p1Data" style="float: left;"></p>            
+            <img id="p2" src="img/p2.jpg" alt="." style="float: right;" onmouseover="pizzaData(this)" onmouseout="removePizzaData(this)" ondblclick="checkPizza(this)">
+            <p class="pizzaData" id="p2Data" style="float: right;"></p>
+        </div>        
+
+        <div>
+            <p class="checked" id="p1Checked" style="float: left;"></p>
+            <p class="checked" id="p2Checked" style="float: right;"></p>
+        </div>
+
+        <div>
+            <img id="p3" src="img/p3.jpg" alt="." style="float: left;" onmouseover="pizzaData(this)" onmouseout="removePizzaData(this)" ondblclick="checkPizza(this)">
+            <p class="pizzaData" id="p3Data" style="float: left;"></p>            
+            <img id="p4" src="img/p4.jpg" alt="." style="float: right;" onmouseover="pizzaData(this)" onmouseout="removePizzaData(this)" ondblclick="checkPizza(this)">
+            <p class="pizzaData" id="p4Data" style="float: right;"></p>
+        </div>
+
+        <div>
+            <p class="checked" id="p3Checked" style="float: left;"></p>
+            <p class="checked" id="p4Checked" style="float: right;"></p>
+        </div>
+
+        <div>
+            <img id="p5" src="img/p5.jpg" alt="." style="float: left;" onmouseover="pizzaData(this)" onmouseout="removePizzaData(this)" ondblclick="checkPizza(this)">
+            <p class="pizzaData" id="p5Data" style="float: left;"></p>            
+            <img id="p6" src="img/p6.jpg" alt="." style="float: right;" onmouseover="pizzaData(this)" onmouseout="removePizzaData(this)" ondblclick="checkPizza(this)">
+            <p class="pizzaData" id="p6Data" style="float: right;"></p>
+        </div>
+
+        <div>
+            <p class="checked" id="p5Checked" style="float: left;"></p>
+            <p class="checked" id="p6Checked" style="float: right;"></p>
+        </div>
+
+        <br>
+        <br>
+        <br>
+
+        <hr>
+        
+        <h2><strong><p>사이드 메뉴</p></strong></h2>
+        <div>
+            <form style="padding-left: 30px; float: left;">
+                <select id="sel">
+                    <option>토마토 파스타(7500원)
+                    <option>크림 파스타(8500원)                
+                    <option>콜라 500ml(1500원)
+                    <option>콜라 1.25L(2000원)
+                    <option>[제거]토마토 파스타
+                    <option>[제거]크림 파스타
+                    <option>[제거]콜라 500ml
+                    <option>[제거]콜라 1.25L
+                </select>                       
+            </form>
+            <button style="margin-left: 40px;" onclick="sideSelect()">사이드 선택</button>    
+        </div>
+
+        <br>
+        <br>
+        <br>
+
+        <hr>
+        
+        <h2><strong><p>추가 옵션</p></strong></h2>
+        <p style="padding-left: 30px;">모든 메뉴는 4000원입니다.</p>
+        <div>
+            <form style="padding-left: 30px; float: left;">
+                <input type="radio" name="option">치즈 크러스트
+                <input type="radio" name="option">고구마 골드
+                <input type="radio" name="option">팥 골드
+                <input type="radio" name="option">슈크림 치즈 골드
+                <input type="radio" name="option">옵션 제거
+            </form>   
+            <button style="margin-left: 40px;" onclick="optionSelect()">옵션 선택</button>    
+        </div>
+        
+
+        <br>
+        <br>
+        <br>
+        
+        <hr>
+
+        <h2><strong><p>주문 확인</p></strong></h2>
+        <p id="price" style="padding-left: 20%; float: left;">0</p>
+        <p style="float: left;">원</p>
+        <div id="bill" style="clear: both; padding-left: 3%;"></div>
+
+        <form style="padding: 50px 30px 50px 10%; float: left;">
+            <input id="name" type="text" placeholder="주문자 성명">             
+        </form>
+        <button style="float: left; margin-top: 50px;" onclick="submit()">주문 하기</button>
+
+    </body>
+</html>
